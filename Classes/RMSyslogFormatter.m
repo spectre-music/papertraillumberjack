@@ -36,11 +36,26 @@ static NSString* const RMAppUUIDKey = @"RMAppUUIDKey";
         case RMSyslogRFCType5424:
             return [self formatWithRFC5424:logMessage];
             break;
+        case RMSyslogCompact:
+            return [self formatCompact:logMessage];
+            break;
         case RMSyslogRFCType3164:
         default:
             return [self formatWithRFC3164:logMessage];
             break;
     }
+}
+
+-(NSString*) formatCompact:(DDLogMessage*) logMessage
+{
+    NSString* msg = logMessage.message;
+    
+    NSString* logLevel = [self rfc3164LogLevel:logMessage];
+    NSString* timestamp = [self rfc3164Timestamp:logMessage];
+    
+    NSString* log = [NSString stringWithFormat:@"<%@>%@ %@ %@", logLevel, timestamp, self.machineName, msg];
+    
+    return log;
 }
 
 -(NSString*) formatWithRFC3164:(DDLogMessage*) logMessage

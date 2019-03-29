@@ -11,5 +11,6 @@
  */
 typedef NS_ENUM(NSInteger, RMSyslogRFCType) {
     RMSyslogRFCType5424,
-    RMSyslogRFCType3164
+    RMSyslogRFCType3164,
+    RMSyslogCompact
 };
