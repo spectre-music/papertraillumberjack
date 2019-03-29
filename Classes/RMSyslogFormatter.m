@@ -53,7 +53,7 @@ static NSString* const RMAppUUIDKey = @"RMAppUUIDKey";
     NSString* logLevel = [self rfc3164LogLevel:logMessage];
     NSString* timestamp = [self rfc3164Timestamp:logMessage];
     
-    NSString* log = [NSString stringWithFormat:@"<%@>%@ %@ %@", logLevel, timestamp, self.machineName, msg];
+    NSString* log = [NSString stringWithFormat:@"<%@>%@ %@ %@: %@", logLevel, timestamp, self.machineName, self.programName, msg];
     
     return log;
 }
